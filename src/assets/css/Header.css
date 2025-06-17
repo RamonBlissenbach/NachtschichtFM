@@ -1,0 +1,6 @@
+.header-glass {
+  background: rgba(13, 110, 253, 0.10); /* Bootstrap bg-primary mit 10% Deckkraft */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: none;
+}
