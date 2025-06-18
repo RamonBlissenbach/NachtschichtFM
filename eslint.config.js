@@ -44,5 +44,5 @@ export default defineConfig([
     }
   },
 ], {
-  ignores: ["src/blocks/**"]
+  ignores: ["src/blocks/**", "public/smoothscroll.js"]
 });
