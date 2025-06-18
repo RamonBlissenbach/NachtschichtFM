@@ -25,6 +25,8 @@ const PageTemplate: React.FC<PageTemplateProps> = ({
       overflowX: 'hidden',
       backgroundColor: '#000612',
       position: 'relative',
+      display: 'flex',
+      flexDirection: 'column',
     }}
   >
     {/* Particles Background */}
@@ -74,7 +76,7 @@ const PageTemplate: React.FC<PageTemplateProps> = ({
     </FadeContent>
 
     {/* Content Section */}
-    <main className="flex-grow-1 d-flex justify-content-center align-items-start" style={{ position: 'relative', zIndex: 3 }}>
+    <main className="flex-grow-1 d-flex justify-content-center align-items-start" style={{ position: 'relative', zIndex: 3, flex: 1 }}>
       <div
         className="card text-light w-100 overflow-hidden mx-3"
         style={{ maxWidth: 900, border: 'none', borderRadius: 20, backgroundColor: 'transparent' }}
@@ -82,7 +84,7 @@ const PageTemplate: React.FC<PageTemplateProps> = ({
         <div className="card-body">{children}</div>
       </div>
     </main>
-  <Footer />
+    <Footer />
   </div>
 );
 
