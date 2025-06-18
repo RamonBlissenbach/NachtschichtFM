@@ -24,7 +24,7 @@ export async function fetchSchedule(station: string = Station) {
 
 // Hole die Hörerzahl einer Station
 export async function fetchListeners(station: string = Station) {
-  const res = await fetch(`https://api.laut.fm/station/${station}/listeners`);
+  const res = await fetch(`${API_BASE_URL}/station/${station}/listeners`);
   if (!res.ok) throw new Error('Fehler beim Laden der Hörerzahl');
   return res.json();
 }

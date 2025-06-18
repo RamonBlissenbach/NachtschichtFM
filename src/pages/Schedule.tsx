@@ -15,38 +15,41 @@ function Schedule({ listeners, songs, schedule }: { listeners: number, songs: an
   return (
     <PageTemplate title="Programm" subtitle="Aktuelle Sendungen und Highlights">
       <div className="container py-4">
-
         {/* Stat Cards */}
         <AnimatedContent distance={100} direction="vertical" reverse={false} duration={1.5} ease="power3.out" initialOpacity={0} animateOpacity scale={1} threshold={0.1} delay={0.2}>
           <section className="mb-5">
             <div className="row g-4">
               <div className="col-12 col-md-4">
                 <SpotlightCard className="custom-spotlight-card" spotlightColor="rgba(0, 20, 255, 0.5)">
-                <div className="card-body">
-                  <i className="bi bi-people-fill display-5 mb-2 d-block fs-1"></i>
-                  <h5 className="card-title fw-bold mb-1">Hörer aktuell</h5>
-                  <p className="card-text fs-5 mb-0" style={{color: '#888'}}><CountUp from={0} to={listeners} separator="," direction="up" duration={1} className="count-up-text"/></p>
-                </div>
+                  <div className="card-body">
+                    <i className="bi bi-people-fill display-5 mb-2 d-block fs-1"></i>
+                    <h5 className="card-title fw-bold mb-1">Hörer aktuell</h5>
+                    <p className="card-text fs-5 mb-0" style={{ color: '#888' }}>
+                      <CountUp from={0} to={listeners} separator="," direction="up" duration={1} className="count-up-text" />
+                    </p>
+                  </div>
                 </SpotlightCard>
               </div>
-
               <div className="col-12 col-md-4">
                 <SpotlightCard className="custom-spotlight-card" spotlightColor="rgba(0, 20, 255, 0.5)">
-                <div className="card-body">
-                  <i className="bi bi-music-note-beamed display-5 mb-2 d-block fs-1"></i>
-                  <h5 className="card-title fw-bold mb-1">Songs gespielt</h5>
-                  <p className="card-text fs-5 mb-0" style={{color: '#888'}}><CountUp from={0} to={songsPlayed} separator="," direction="up" duration={1} className="count-up-text"/></p>
-                </div>
+                  <div className="card-body">
+                    <i className="bi bi-music-note-beamed display-5 mb-2 d-block fs-1"></i>
+                    <h5 className="card-title fw-bold mb-1">Songs gespielt</h5>
+                    <p className="card-text fs-5 mb-0" style={{ color: '#888' }}>
+                      <CountUp from={0} to={songsPlayed} separator="," direction="up" duration={1} className="count-up-text" />
+                    </p>
+                  </div>
                 </SpotlightCard>
               </div>
-
               <div className="col-12 col-md-4">
                 <SpotlightCard className="custom-spotlight-card" spotlightColor="rgba(0, 20, 255, 0.5)">
-                <div className="card-body">
-                  <i className="bi bi-broadcast-pin display-5 mb-2 d-block fs-1"></i>
-                  <h5 className="card-title fw-bold mb-1">Sendungen heute</h5>
-                  <p className="card-text fs-5 mb-0" style={{color: '#888'}}><CountUp from={0} to={showsToday} separator="," direction="up" duration={1} className="count-up-text"/></p>
-                </div>
+                  <div className="card-body">
+                    <i className="bi bi-broadcast-pin display-5 mb-2 d-block fs-1"></i>
+                    <h5 className="card-title fw-bold mb-1">Sendungen heute</h5>
+                    <p className="card-text fs-5 mb-0" style={{ color: '#888' }}>
+                      <CountUp from={0} to={showsToday} separator="," direction="up" duration={1} className="count-up-text" />
+                    </p>
+                  </div>
                 </SpotlightCard>
               </div>
             </div>

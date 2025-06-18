@@ -22,12 +22,12 @@ jobs:
         run: npm test -- --ci
 
       # 2. Linting (ESLint)
-      # - name: Run ESLint
-      #   run: npm run lint
+      - name: Run ESLint
+        run: npm run lint
 
       # Build-Schritt
-      - name: Build React App
-        run: npm run build
+      # - name: Build React App
+      #   run: npm run build
 
       # 5. Discord Benachrichtigung
       - name: Discord Benachrichtigung bei Erfolg

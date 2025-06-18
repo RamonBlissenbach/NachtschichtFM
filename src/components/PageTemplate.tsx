@@ -1,9 +1,6 @@
 import React from 'react';
 import ShinyText from '../blocks/TextAnimations/ShinyText/ShinyText';
-import TextPressure from '../blocks/TextAnimations/TextPressure/TextPressure';
-import GlitchText from '../blocks/TextAnimations/GlitchText/GlitchText';
 import Particles from '../blocks/Backgrounds/Particles/Particles';
-import Threads from '../blocks/Backgrounds/Threads/Threads';
 import FadeContent from '../blocks/Animations/FadeContent/FadeContent';
 
 interface PageTemplateProps {
@@ -13,13 +10,9 @@ interface PageTemplateProps {
   children: React.ReactNode;
 }
 
-const DEFAULT_IMAGE =
-  'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=1200&q=80';
-
 const PageTemplate: React.FC<PageTemplateProps> = ({
   title,
   subtitle,
-  imageUrl = DEFAULT_IMAGE,
   children,
 }) => (
   <div
