@@ -8,11 +8,21 @@ const Header: React.FC = () => (
     style={{
       zIndex: 1050,
       width: "90%",
-      maxWidth: "700px",
+      maxWidth: "900px",
       marginTop: "1rem",
+      backdropFilter: "blur(5px) ",
+      WebkitBackdropFilter: "blur(5px)",
+      background: "rgba(31, 38, 135, 0.1)",
+      borderRadius: "1.5rem",
+      boxShadow: "0 4px 16px 0 rgba(31, 38, 135, 0.37)",
+      border: "1px solid rgba(255, 255, 255, 0.18)",
     }}
   >
-    <div className="card shadow-lg rounded-4 header-glass text-white">
+    <div className="card shadow-lg rounded-4 text-white" style={{
+      background: "transparent",
+      border: "none",
+      boxShadow: "none"
+    }}>
       <nav className="navbar navbar-expand-lg navbar-dark px-3">
         <Link className="navbar-brand fw-bold" to="/">
           Nachtschicht FM

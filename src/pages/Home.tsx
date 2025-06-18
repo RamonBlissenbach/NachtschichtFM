@@ -1,4 +1,7 @@
 import PageTemplate from '../components/PageTemplate';
+import SpotlightCard from '../blocks/Components/SpotlightCard/SpotlightCard';
+import AnimatedContent from '../blocks/Animations/AnimatedContent/AnimatedContent';
+import CountUp from '../blocks/TextAnimations/CountUp/CountUp';
 
 function countShowsToday(schedule: any[]) {
   const today = ['sun','mon','tue','wed','thu','fri','sat'][new Date().getDay()];
@@ -12,52 +15,49 @@ function Home({ listeners, songs, schedule }: { listeners: number, songs: any[],
   return (
     <PageTemplate title="Nachtschicht FM" subtitle="Dein Darktheme Radio">
       <div className="container py-4">
-
         {/* Stat Cards */}
-        <section className="mb-5">
-          <div className="row g-4">
-            <div className="col-12 col-md-4">
-              <div className="card bg-primary bg-opacity-75 text-light h-100 shadow-sm">
-                <div className="card-body d-flex align-items-center">
-                  <i className="bi bi-people-fill display-5 me-3"></i>
-                  <div>
-                    <h5 className="card-title mb-1">Hörer aktuell</h5>
-                    <p className="card-text fs-4 fw-bold mb-0">{listeners}</p>
-                  </div>
+        <AnimatedContent distance={100} direction="vertical" reverse={false} duration={1.5} ease="power3.out" initialOpacity={0} animateOpacity scale={1} threshold={0.1} delay={0.2}>
+          <section className="mb-5">
+            <div className="row g-4">
+              <div className="col-12 col-md-4">
+                <SpotlightCard className="custom-spotlight-card" spotlightColor="rgba(0, 20, 255, 0.5)">
+                <div className="card-body">
+                  <i className="bi bi-people-fill display-5 mb-2 d-block fs-1"></i>
+                  <h5 className="card-title fw-bold mb-1">Hörer aktuell</h5>
+                  <p className="card-text fs-5 mb-0" style={{color: '#888'}}><CountUp from={0} to={listeners} separator="," direction="up" duration={1} className="count-up-text"/></p>
                 </div>
+                </SpotlightCard>
+              </div>
+
+              <div className="col-12 col-md-4">
+                <SpotlightCard className="custom-spotlight-card" spotlightColor="rgba(0, 20, 255, 0.5)">
+                <div className="card-body">
+                  <i className="bi bi-music-note-beamed display-5 mb-2 d-block fs-1"></i>
+                  <h5 className="card-title fw-bold mb-1">Songs gespielt</h5>
+                  <p className="card-text fs-5 mb-0" style={{color: '#888'}}><CountUp from={0} to={songsPlayed} separator="," direction="up" duration={1} className="count-up-text"/></p>
+                </div>
+                </SpotlightCard>
+              </div>
+
+              <div className="col-12 col-md-4">
+                <SpotlightCard className="custom-spotlight-card" spotlightColor="rgba(0, 20, 255, 0.5)">
+                <div className="card-body">
+                  <i className="bi bi-broadcast-pin display-5 mb-2 d-block fs-1"></i>
+                  <h5 className="card-title fw-bold mb-1">Sendungen heute</h5>
+                  <p className="card-text fs-5 mb-0" style={{color: '#888'}}><CountUp from={0} to={showsToday} separator="," direction="up" duration={1} className="count-up-text"/></p>
+                </div>
+                </SpotlightCard>
               </div>
             </div>
-            <div className="col-12 col-md-4">
-              <div className="card bg-primary bg-opacity-75 text-light h-100 shadow-sm">
-                <div className="card-body d-flex align-items-center">
-                  <i className="bi bi-music-note-beamed display-5 me-3"></i>
-                  <div>
-                    <h5 className="card-title mb-1">Songs gespielt</h5>
-                    <p className="card-text fs-4 fw-bold mb-0">{songsPlayed}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-12 col-md-4">
-              <div className="card bg-primary bg-opacity-75 text-light h-100 shadow-sm">
-                <div className="card-body d-flex align-items-center">
-                  <i className="bi bi-broadcast-pin display-5 me-3"></i>
-                  <div>
-                    <h5 className="card-title mb-1">Sendungen heute</h5>
-                    <p className="card-text fs-4 fw-bold mb-0">{showsToday}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+          </section>
+        </AnimatedContent>
 
         {/* Über Uns Bereich */}
-        <section className="my-5 py-4 border-top border-bottom">
+        <section className="my-5 py-5">
           <div className="row align-items-center">
             <div className="col-12 col-md-7 mb-4 mb-md-0">
-              <h2 className="fw-bold mb-4 text-primary">
-                <i className="bi bi-people me-2"></i>
+              <h2 className="fw-bold mb-4">
+                <i className="bi bi-people-fill me-2"></i>
                 ÜBER UNS
               </h2>
               <p className="lead mb-3">
@@ -80,36 +80,47 @@ function Home({ listeners, songs, schedule }: { listeners: number, songs: any[],
 
         {/* Dienstleistungen Bereich */}
         <section className="mb-5">
-          <div className="text-center mb-4">
-            <span className="fw-bold fs-2 px-4 py-2 rounded bg-primary text-white d-inline-block">
+          <div className="text-center mb-5">
+            <span className="fw-bold fs-1 px-5 py-3 rounded-pill text-white shadow-lg d-inline-block">
               Unsere Highlights
             </span>
           </div>
-          <div className="row justify-content-center">
-            <div className="col-12 col-md-4 text-center mb-4 mb-md-0">
-              <div className="mx-auto mb-3 d-flex align-items-center justify-content-center bg-primary rounded-circle" style={{width: 100, height: 100}}>
+
+          <div className="row justify-content-center g-4">
+            <div className="col-12 col-md-4 text-center">
+              <div className="mx-auto mb-4 d-flex align-items-center justify-content-center bg-gradient shadow-lg" style={{ border: '1px solid #444', width: 100, height: 100, borderRadius: '50%', background: 'linear-gradient(135deg, #0014ff 0%, #6a82fb 100%)' }}>
                 <i className="bi bi-cash-stack fs-1 text-white"></i>
               </div>
-              <h4 className="fw-bold">Lorem ipsum dolor sit amet</h4>
-              <p>
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+              <h4 className="fw-bold mb-2">Transparente Finanzierung</h4>
+
+              <p className="text-muted">
+                Wir setzen auf faire, transparente Finanzierung und investieren direkt in Musik, Technik und Community. Deine Unterstützung macht den Unterschied!
               </p>
             </div>
-            <div className="col-12 col-md-4 text-center mb-4 mb-md-0">
-              <div className="mx-auto mb-3 d-flex align-items-center justify-content-center bg-primary rounded-circle" style={{width: 100, height: 100}}>
+
+            <div className="col-12 col-md-4 text-center">
+              <div className="mx-auto mb-4 d-flex align-items-center justify-content-center bg-gradient shadow-lg" style={{ border: '1px solid #444', width: 100, height: 100, borderRadius: '50%', background: 'linear-gradient(135deg, #0014ff 0%, #6a82fb 100%)' }}>
                 <i className="bi bi-mic-fill fs-1 text-white"></i>
               </div>
-              <h4 className="fw-bold">Lorem ipsum dolor sit amet</h4>
-              <p>
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.              </p>
+
+              <h4 className="fw-bold mb-2">Live Sendungen & Podcasts</h4>
+
+              <p className="text-muted">
+                Erlebe spannende Live-Shows, interaktive Talks und exklusive Podcasts – immer frisch, immer authentisch, immer für dich gemacht.
+              </p>
             </div>
+
             <div className="col-12 col-md-4 text-center">
-              <div className="mx-auto mb-3 d-flex align-items-center justify-content-center bg-primary rounded-circle" style={{width: 100, height: 100}}>
+              <div className="mx-auto mb-4 d-flex align-items-center justify-content-center bg-gradient shadow-lg" style={{ border: '1px solid #444', width: 100, height: 100, borderRadius: '50%', background: 'linear-gradient(135deg, #0014ff 0%, #6a82fb 100%)' }}>
                 <i className="bi bi-newspaper fs-1 text-white"></i>
               </div>
-              <h4 className="fw-bold">Lorem ipsum dolor sit amet</h4>
-              <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.              </p>
+
+              <h4 className="fw-bold mb-2">Aktuelle News & Trends</h4>
+
+              <p className="text-muted">
+                Bleib informiert mit News, Trends und Insights aus der Musikszene und unserer Community – immer up-to-date, immer relevant.
+              </p>
             </div>
           </div>
         </section>
