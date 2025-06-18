@@ -3,10 +3,10 @@ const { createDefaultPreset } = require("ts-jest");
 const tsJestTransformCfg = createDefaultPreset().transform;
 
 /** @type {import("jest").Config} **/
-export default {
+module.exports = {
   testEnvironment: "jsdom",
   transform: {
     ...tsJestTransformCfg,
   },
-  setupFilesAfterEnv: ["@testing-library/jest-dom/extend-expect"], 
+  setupFilesAfterEnv: ["@testing-library/jest-dom"],
 };
