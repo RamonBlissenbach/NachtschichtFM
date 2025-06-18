@@ -68,13 +68,15 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
         WebkitBackdropFilter: "blur(5px)",
         background: "rgba(31, 38, 135, 0.1)",
         boxShadow: "0 4px 16px 0 rgba(31, 38, 135, 0.37)",
+        willChange: "translateZ(0)",
+        transform: "transform",
       }}
     >
       <div style={{ width: '100%', top: '-10px', position: 'absolute', opacity: 0.3}}>
-        <Threads
-          amplitude={1}
+        <Threads 
+          amplitude={isPlaying ? 1 : 0}
           distance={0}
-          enableMouseInteraction={true}
+          enableMouseInteraction={false}
         />
       </div>
       <div
@@ -269,7 +271,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
           </div>
         </div>
       </div>
-      <audio ref={audioRef} src={src} controls={false} />
+      <audio ref={audioRef} src={src} controls={false} style={{ display: "none" }} />
     </StarBorder>
   );
 };
