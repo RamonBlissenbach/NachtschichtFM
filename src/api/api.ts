@@ -1,5 +1,5 @@
 const API_BASE_URL = 'https://api.laut.fm';
-const Station = 'mega-sunshine';
+const Station = 'habbore-livemix';
 
 // Hole die letzten 10 Songs einer Station
 export async function fetchLastSongs(station: string = Station) {

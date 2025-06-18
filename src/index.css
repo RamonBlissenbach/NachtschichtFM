@@ -29,8 +29,6 @@ a:hover {
 
 body {
   margin: 0;
-  /* display: flex; */         /* Entfernt, damit das Layout volle Breite nutzt */
-  /* place-items: center; */   /* Entfernt */
   min-width: 320px;
   min-height: 100vh;
   width: 100vw;

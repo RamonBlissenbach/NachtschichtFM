@@ -41,9 +41,8 @@ function App() {
   return (
     <Router>
       <Header />
-      {/* MusicPlayer außerhalb von Routes platzieren */}
       <MusicPlayer
-        src="https://stream.laut.fm/mega-sunshine"
+        src="https://stream.laut.fm/habbore-livemix"
         title={currentSong?.title || ''}
         artist={currentSong?.artist?.name || ''}
       />
