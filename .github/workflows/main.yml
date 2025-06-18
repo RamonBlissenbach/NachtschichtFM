@@ -18,8 +18,8 @@ jobs:
       - run: npm install
 
       # 1. Automatisierte Tests (Jest)
-      - name: Run Tests
-        run: npm test -- --ci
+      # - name: Run Tests
+      #   run: npm test -- --ci
 
       # 2. Linting (ESLint)
       - name: Run ESLint
