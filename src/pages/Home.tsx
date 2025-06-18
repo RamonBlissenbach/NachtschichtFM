@@ -2,50 +2,68 @@ import PageTemplate from '../components/PageTemplate';
 import SpotlightCard from '../blocks/Components/SpotlightCard/SpotlightCard';
 import AnimatedContent from '../blocks/Animations/AnimatedContent/AnimatedContent';
 import CountUp from '../blocks/TextAnimations/CountUp/CountUp';
+import { useEffect, useState } from 'react';
+import { fetchStats } from '../api/api';
 
-function countShowsToday(schedule: any[]) {
-  const today = ['sun','mon','tue','wed','thu','fri','sat'][new Date().getDay()];
-  return schedule.filter(item => item.day === today).length;
-}
+function Home() {
+  const [stats, setStats] = useState<{ listeners: number, last_song: any, team_members: number } | null>(null);
+  const [loading, setLoading] = useState(true);
 
-function Home({ listeners, songs, schedule }: { listeners: number, songs: any[], schedule: any[] }) {
-  const showsToday = countShowsToday(schedule);
-  const songsPlayed = songs.length > 0 ? songs.length : 0;
+  useEffect(() => {
+    fetchStats()
+      .then((data) => {
+        setStats(data);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
 
   return (
-    <PageTemplate title="Nachtschicht FM" subtitle="Dein Radio für die Nacht - Musik, Shows & mehr">
+    <PageTemplate title="NachtschichtFM" subtitle="Dein Radio für die Nacht - Musik, Shows & mehr">
       <div className="container py-4">
         {/* Stat Cards */}
         <AnimatedContent distance={100} direction="vertical" reverse={false} duration={1.5} ease="power3.out" initialOpacity={0} animateOpacity scale={1} threshold={0.1} delay={0.2}>
           <section className="mb-5">
             <div className="row g-4">
-              <div className="col-12 col-md-4">
-                <SpotlightCard className="custom-spotlight-card" spotlightColor="rgba(0, 20, 255, 0.5)">
-                <div className="card-body">
-                  <i className="bi bi-people-fill display-5 mb-2 d-block fs-1"></i>
-                  <h5 className="card-title fw-bold mb-1">Hörer aktuell</h5>
-                  <p className="card-text fs-5 mb-0" style={{color: '#888'}}><CountUp from={0} to={listeners} separator="," direction="up" duration={1} className="count-up-text"/></p>
-                </div>
+              <div className="col-12 col-md-4 d-flex">
+                <SpotlightCard className="custom-spotlight-card flex-fill" spotlightColor="rgba(0, 20, 255, 0.5)">
+                  <div className="card-body d-flex flex-column align-items-start justify-content-center" style={{ minHeight: 170, height: "100%" }}>
+                    <i className="bi bi-people-fill display-5 mb-2 d-block fs-1"></i>
+                    <h5 className="card-title fw-bold mb-1">Hörer aktuell</h5>
+                    <p className="card-text fs-5 mb-0" style={{color: '#888'}}>
+                      {loading ? "..." : <CountUp from={0} to={stats?.listeners ?? 0} separator="," direction="up" duration={1} className="count-up-text"/>}
+                    </p>
+                  </div>
                 </SpotlightCard>
               </div>
 
-              <div className="col-12 col-md-4">
-                <SpotlightCard className="custom-spotlight-card" spotlightColor="rgba(0, 20, 255, 0.5)">
-                <div className="card-body">
-                  <i className="bi bi-music-note-beamed display-5 mb-2 d-block fs-1"></i>
-                  <h5 className="card-title fw-bold mb-1">Songs gespielt</h5>
-                  <p className="card-text fs-5 mb-0" style={{color: '#888'}}><CountUp from={0} to={songsPlayed} separator="," direction="up" duration={1} className="count-up-text"/></p>
-                </div>
+              <div className="col-12 col-md-4 d-flex">
+                <SpotlightCard className="custom-spotlight-card flex-fill" spotlightColor="rgba(0, 20, 255, 0.5)">
+                  <div className="card-body d-flex flex-column align-items-start justify-content-center" style={{ minHeight: 170, height: "100%" }}>
+                    <i className="bi bi-music-note-beamed display-5 mb-2 d-block fs-1"></i>
+                    <h5 className="card-title fw-bold mb-1">Letzter Song</h5>
+                    <p className="card-text fs-6 mb-0" style={{color: '#888'}}>
+                      {loading ? "..." : stats?.last_song ? (
+                        <>
+                          <span>{stats.last_song.title}</span>
+                          <br />
+                          <span style={{ fontSize: "0.9em" }}>{stats.last_song.artist?.name}</span>
+                        </>
+                      ) : "-"}
+                    </p>
+                  </div>
                 </SpotlightCard>
               </div>
 
-              <div className="col-12 col-md-4">
-                <SpotlightCard className="custom-spotlight-card" spotlightColor="rgba(0, 20, 255, 0.5)">
-                <div className="card-body">
-                  <i className="bi bi-broadcast-pin display-5 mb-2 d-block fs-1"></i>
-                  <h5 className="card-title fw-bold mb-1">Sendungen heute</h5>
-                  <p className="card-text fs-5 mb-0" style={{color: '#888'}}><CountUp from={0} to={showsToday} separator="," direction="up" duration={1} className="count-up-text"/></p>
-                </div>
+              <div className="col-12 col-md-4 d-flex">
+                <SpotlightCard className="custom-spotlight-card flex-fill" spotlightColor="rgba(0, 20, 255, 0.5)">
+                  <div className="card-body d-flex flex-column align-items-start justify-content-center" style={{ minHeight: 170, height: "100%" }}>
+                    <i className="bi bi-people display-5 mb-2 d-block fs-1"></i>
+                    <h5 className="card-title fw-bold mb-1">Teammitglieder</h5>
+                    <p className="card-text fs-5 mb-0" style={{color: '#888'}}>
+                      {loading ? "..." : <CountUp from={0} to={stats?.team_members ?? 0} separator="," direction="up" duration={1} className="count-up-text"/>}
+                    </p>
+                  </div>
                 </SpotlightCard>
               </div>
             </div>

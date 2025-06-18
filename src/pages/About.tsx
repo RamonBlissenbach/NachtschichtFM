@@ -2,6 +2,7 @@ import PageTemplate from '../components/PageTemplate';
 import { useEffect, useState } from 'react';
 import AnimatedContent from '../blocks/Animations/AnimatedContent/AnimatedContent';
 import SpotlightCard from '../blocks/Components/SpotlightCard/SpotlightCard';
+import { fetchTeam } from '../api/api'; // hinzugefügt
 
 
 type User = { id: string; username: string; avatar: string | null; role: string; category: string };
@@ -27,11 +28,7 @@ function About() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('http://localhost:3001/team/full')
-      .then(async (res) => {
-        if (!res.ok) throw new Error(`Fehler: ${res.status}`);
-        return res.json();
-      })
+    fetchTeam()
       .then((data) => setUsers(data))
       .catch((err) => setError(`Fehler beim Laden: ${err.message}`));
   }, []);
@@ -72,6 +69,37 @@ function About() {
                 </div>
               </div>
             ))}
+          </div>
+          {/* Bewerben Abschnitt */}
+          <div className="text-center mt-5">
+            <h3 className="mb-3">Mitmachen?</h3>
+            <p className="mb-4">
+              Du möchtest Teil des Teams werden oder dich bewerben? Wir freuen uns auf dich!
+              Schreib uns einfach auf unserem Discord-Server.
+            </p>
+            <a
+              href="https://discord.gg/nachtschicht"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn"
+              style={{
+                background: '#5865F2',
+                color: '#fff',
+                fontWeight: 500,
+                borderRadius: '6px',
+                padding: '6px 16px',
+                fontSize: '1rem',
+                boxShadow: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.4em',
+                transition: 'background 0.2s',
+                opacity: 0.92,
+              }}
+            >
+              <i className="bi bi-discord fs-5 me-2"></i>
+              Zum Discord-Server
+            </a>
           </div>
         </div>
       </AnimatedContent>
