@@ -42,7 +42,7 @@ function App() {
     <Router>
       <Header />
       <MusicPlayer
-        src="https://stream.laut.fm/habbore-livemix"
+        src="https://stream.laut.fm/averfm-mashup"
         title={currentSong?.title || ''}
         artist={currentSong?.artist?.name || ''}
       />

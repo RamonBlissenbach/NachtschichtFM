@@ -35,12 +35,12 @@
 
 .inner-content {
   position: relative;
-  background: linear-gradient(to bottom, #060010, #111);
-  border: 1px solid #222;
+  background: linear-gradient(to bottom, #000210, #060d2c);
+  /* border: 1px solid #222; */
   color: white;
   font-size: 16px;
-  text-align: center;
-  padding: 16px 26px;
+  /* text-align: center; */
+  /* padding: 16px 26px; */
   border-radius: 20px;
   z-index: 1;
 }

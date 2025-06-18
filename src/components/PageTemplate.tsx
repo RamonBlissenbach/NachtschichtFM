@@ -3,6 +3,8 @@ import ShinyText from '../blocks/TextAnimations/ShinyText/ShinyText';
 import Particles from '../blocks/Backgrounds/Particles/Particles';
 import FadeContent from '../blocks/Animations/FadeContent/FadeContent';
 
+import Footer from './Footer';
+
 interface PageTemplateProps {
   title: string;
   subtitle?: string;
@@ -56,7 +58,7 @@ const PageTemplate: React.FC<PageTemplateProps> = ({
         <div
           className="position-relative d-flex flex-column justify-content-center align-items-center h-100 mt-5"
         >
-          <div>
+          <div className="d-flex flex-column align-items-center justify-content-center">
             <ShinyText
               text={title}
               disabled={false}
@@ -80,6 +82,7 @@ const PageTemplate: React.FC<PageTemplateProps> = ({
         <div className="card-body">{children}</div>
       </div>
     </main>
+  <Footer />
   </div>
 );
 

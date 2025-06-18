@@ -13,7 +13,7 @@ function Home({ listeners, songs, schedule }: { listeners: number, songs: any[],
   const songsPlayed = songs.length > 0 ? songs.length : 0;
 
   return (
-    <PageTemplate title="Nachtschicht FM" subtitle="Dein Darktheme Radio">
+    <PageTemplate title="Nachtschicht FM" subtitle="Dein Radio für die Nacht - Musik, Shows & mehr">
       <div className="container py-4">
         {/* Stat Cards */}
         <AnimatedContent distance={100} direction="vertical" reverse={false} duration={1.5} ease="power3.out" initialOpacity={0} animateOpacity scale={1} threshold={0.1} delay={0.2}>
