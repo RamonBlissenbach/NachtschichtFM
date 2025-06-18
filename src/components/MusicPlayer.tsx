@@ -160,6 +160,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
   }, [position]);
 
   return (
+    // eslint-disable-next-line
     <StarBorder
       as="div"
       ref={playerRef}
