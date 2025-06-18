@@ -1,54 +1,61 @@
-# React + TypeScript + Vite
+# NachtschichtFM
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+NachtschichtFM ist ein moderner Webradio-Player. Das Projekt bietet einen übersichtlichen Sendeplan, aktuelle Songlisten, Hörerstatistiken und spannende Text- und Hintergrundanimationen.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Live-Hörerzahlen** und aktuelle Songs von [laut.fm](https://laut.fm)
+- **Sendeplan** mit Übersicht aller Shows
+- **Responsive Design** für Desktop und Mobile
+- **Interaktive Animationen** (z.B. ScrambledText, FallingText)
+- **Smooth Scrolling** und moderne UI-Komponenten
+- **React + TypeScript** Frontend
+- **Vite** als Build-Tool
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. **Repository klonen**
+   ```sh
+   git clone <REPO-URL>
+   cd nachtschichtfm
+   ```
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+2. **Abhängigkeiten installieren**
+   ```sh
+   npm install
+   ```
+
+3. **Entwicklungsserver starten**
+   ```sh
+   npm run dev
+   ```
+
+4. **Projekt im Browser öffnen**
+   - Standardmäßig unter [http://localhost:5173](http://localhost:5173)
+
+## Tests
+
+Um die Tests auszuführen:
+```sh
+npm run test
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Linting
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+Um den Code zu prüfen:
+```sh
+npm run lint
 ```
+
+## API
+
+Die Daten werden über die [laut.fm API](https://api.laut.fm) geladen. Die wichtigsten API-Funktionen findest du in [`src/api/api.ts`](src/api/api.ts):
+
+- [`fetchLastSongs`](src/api/api.ts)
+- [`fetchCurrentSong`](src/api/api.ts)
+- [`fetchSchedule`](src/api/api.ts)
+- [`fetchListeners`](src/api/api.ts)
+
+---
+
+**Viel Spaß mit NachtschichtFM!**
