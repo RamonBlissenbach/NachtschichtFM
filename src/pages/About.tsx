@@ -26,10 +26,10 @@ function groupByCategory(users: User[]) {
 function About() {
   const [users, setUsers] = useState<User[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true); // Ladezustand
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
 
     fetchTeam()
       .then((data) => {

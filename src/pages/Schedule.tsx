@@ -14,7 +14,7 @@ function Schedule({ listeners, songs, schedule }: { listeners: number, songs: an
   const songsPlayed = songs.length > 0 ? songs.length : 0;
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }, []);
 
   return (
