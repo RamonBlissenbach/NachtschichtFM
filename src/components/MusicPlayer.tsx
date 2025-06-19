@@ -217,7 +217,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
         }}
         title="Zum Verschieben ziehen"
       />
-      <div style={{ width: "100%", top: "-10px", position: "absolute", opacity: 0.3 }}>
+      <div style={{ width: "100%", top: "-40px", position: "absolute", opacity: 0.3 }}>
         <Threads
           amplitude={isPlaying ? 1 : 0}
           distance={0}
