@@ -1,8 +1,13 @@
 import PageTemplate from '../components/PageTemplate';
 import AnimatedContent from '../blocks/Animations/AnimatedContent/AnimatedContent';
 import SpotlightCard from '../blocks/Components/SpotlightCard/SpotlightCard';
+import { useEffect } from 'react';
 
 function Contact() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, []);
+
   return (
     <PageTemplate title="Kontakt" subtitle="So erreichst du uns">
       <div className="container py-4">

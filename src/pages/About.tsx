@@ -28,6 +28,8 @@ function About() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+
     fetchTeam()
       .then((data) => setUsers(data))
       .catch((err) => setError(`Fehler beim Laden: ${err.message}`));

@@ -2,6 +2,7 @@ import PageTemplate from '../components/PageTemplate';
 import SpotlightCard from '../blocks/Components/SpotlightCard/SpotlightCard';
 import AnimatedContent from '../blocks/Animations/AnimatedContent/AnimatedContent';
 import CountUp from '../blocks/TextAnimations/CountUp/CountUp';
+import { useEffect } from 'react';
 
 function countShowsToday(schedule: any[]) {
   const today = ['sun','mon','tue','wed','thu','fri','sat'][new Date().getDay()];
@@ -11,6 +12,10 @@ function countShowsToday(schedule: any[]) {
 function Schedule({ listeners, songs, schedule }: { listeners: number, songs: any[], schedule: any[] }) {
   const showsToday = countShowsToday(schedule);
   const songsPlayed = songs.length > 0 ? songs.length : 0;
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, []);
 
   return (
     <PageTemplate title="Programm" subtitle="Aktuelle Sendungen und Highlights">
