@@ -212,12 +212,10 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
           top: 0,
           left: 0,
           zIndex: 10,
-          background:
-            "linear-gradient(90deg,rgba(0,153,255,0.08),rgba(255,255,255,0.04))",
         }}
         title="Zum Verschieben ziehen"
       />
-      <div style={{ width: "100%", top: "-40px", position: "absolute", opacity: 0.3 }}>
+      <div style={{ width: "100%", top: "-10px", position: "absolute", opacity: 0.3 }}>
         <Threads
           amplitude={isPlaying ? 1 : 0}
           distance={0}
